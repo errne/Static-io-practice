@@ -11,9 +11,14 @@
             margin: 50px;
         }
 
-        #number-display {
-            font-size: 24px;
+        .number-container {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 20px;
+        }
+
+        .number {
+            font-size: 24px;
         }
 
         button {
@@ -28,22 +33,26 @@
 
     <h1>Number Display</h1>
     
-    <div id="number-display">0</div>
+    <div class="number-container">
+        <div id="number1" class="number">?</div>
+        <div id="number2" class="number">?</div>
+    </div>
 
-    <button id="button1" onclick="updateNumber(1)">Button 1</button>
-    <button id="button2" onclick="updateNumber(2)">Button 2</button>
+    <button onclick="updateNumber(1)">Button 1</button>
+    <button onclick="updateNumber(2)">Button 2</button>
 
     <script>
-        let currentNumber = 0;
+        let number1 = null;
+        let number2 = null;
 
         function updateNumber(buttonNumber) {
             if (buttonNumber === 1) {
-                currentNumber += 1;
+                number1 = Math.floor(Math.random() * 100); // Change this logic as needed
+                document.getElementById('number1').innerText = number1;
             } else if (buttonNumber === 2) {
-                currentNumber -= 1;
+                number2 = Math.floor(Math.random() * 100); // Change this logic as needed
+                document.getElementById('number2').innerText = number2;
             }
-
-            document.getElementById('number-display').innerText = currentNumber;
         }
     </script>
 
