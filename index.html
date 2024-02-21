@@ -36,15 +36,15 @@
     
     <div class="number-container">
         <div id="number1" class="number">?</div>
-        <button onclick="updateNumber(1)">Button 1</button>
+        <button onclick="updateNumber(1)">Team 1</button>
     </div>
 
     <div class="number-container">
         <div id="number2" class="number">?</div>
-        <button onclick="updateNumber(2)">Button 2</button>
+        <button onclick="updateNumber(2)">Team 2</button>
     </div>
 
-    <button onclick="resetNumbers()">Reset</button>
+    <button onclick="resetNumbers()">Reset Score</button>
 
     <script>
         let number1 = null;
@@ -52,10 +52,10 @@
 
         function updateNumber(buttonNumber) {
             if (buttonNumber === 1) {
-                number1 = Math.floor(Math.random() * 100); // Change this logic as needed
+                number1 = Math.floor(Math.random() * 42)+60; // Change this logic as needed
                 document.getElementById('number1').innerText = number1;
             } else if (buttonNumber === 2) {
-                number2 = Math.floor(Math.random() * 100); // Change this logic as needed
+                number2 = Math.floor(Math.random() * 42)+60; // Change this logic as needed
                 document.getElementById('number2').innerText = number2;
             }
         }
