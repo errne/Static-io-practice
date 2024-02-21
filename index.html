@@ -26,23 +26,24 @@
             margin: 0 10px;
             cursor: pointer;
         }
+
         #reset-btn {
             margin-top: 20px;
         }
     </style>
 </head>
-<body>
+    <body>
 
     <h1>Basketball Score</h1>
-    
+
     <div class="number-container">
         <div id="number1" class="number">?</div>
-        <button onclick="updateNumber(1)">Team 1</button>
+        <button id="button1" onclick="updateNumber(1)">Team 1</button>
     </div>
 
     <div class="number-container">
         <div id="number2" class="number">?</div>
-        <button onclick="updateNumber(2)">Team 2</button>
+        <button id="button2" onclick="updateNumber(2)">Team 2</button>
     </div>
 
     <button id="reset-btn" onclick="resetNumbers()">Reset Score</button>
@@ -59,10 +60,10 @@
             }
 
             if (buttonNumber === 1) {
-                number1 = Math.floor(Math.random() * 42)+60;
+                number1 = Math.floor(Math.random() * 42) + 60;
                 document.getElementById('number1').innerText = number1;
             } else if (buttonNumber === 2) {
-                number2 = Math.floor(Math.random() * 42)+60;
+                number2 = Math.floor(Math.random() * 42) + 60;
                 document.getElementById('number2').innerText = number2;
             }
 
