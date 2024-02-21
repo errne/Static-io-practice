@@ -13,7 +13,8 @@
 
         .number-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
             margin-bottom: 20px;
         }
 
@@ -35,11 +36,15 @@
     
     <div class="number-container">
         <div id="number1" class="number">?</div>
-        <div id="number2" class="number">?</div>
+        <button onclick="updateNumber(1)">Button 1</button>
     </div>
 
-    <button onclick="updateNumber(1)">Button 1</button>
-    <button onclick="updateNumber(2)">Button 2</button>
+    <div class="number-container">
+        <div id="number2" class="number">?</div>
+        <button onclick="updateNumber(2)">Button 2</button>
+    </div>
+
+    <button onclick="resetNumbers()">Reset</button>
 
     <script>
         let number1 = null;
@@ -53,6 +58,13 @@
                 number2 = Math.floor(Math.random() * 100); // Change this logic as needed
                 document.getElementById('number2').innerText = number2;
             }
+        }
+
+        function resetNumbers() {
+            number1 = null;
+            number2 = null;
+            document.getElementById('number1').innerText = '?';
+            document.getElementById('number2').innerText = '?';
         }
     </script>
 
