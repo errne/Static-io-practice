@@ -30,8 +30,7 @@ jobs:
         npm install jest --save-dev
 
     - name: Create Jest Configuration
-      run: |
-        echo '{"test": "jest"}' > jest.config.json
+      run: echo "{ 'testMatch': ['**/__tests__/**/*.js','**/?(*.)+(spec|test).js]' }" > jest.config.json
 
     - name: Install Dependencies
       run: |
