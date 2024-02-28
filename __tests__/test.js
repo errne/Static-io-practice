@@ -2,7 +2,9 @@ const { updateNumber, resetNumbers } = require('../test-script.js');
 
 // Mock the DOM environment using JSDOM
 const { JSDOM } = require('jsdom');
-const { document } = new JSDOM('').window;
+//const { document } = new JSDOM('').window;
+const dom = new JSDOM('<!doctype html><html><body></body></html>');
+global.document = dom.window.document;
 
 // Mock the getElementById function
 global.document.getElementById = jest.fn(() => document.createElement('div'));
