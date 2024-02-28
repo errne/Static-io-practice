@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .number-container {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .number {
+            font-size: 24px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        #reset-btn {
+            margin-top: 50px;
+            display: block;
+            margin: 16px auto;
+        }
+    </style>
+</head>
+    <body>
+
+    <h1>Soccer Score</h1>
+
+    <div class="number-container">
+        <div id="number1" class="number">?</div>
+        <button id="button1" onclick="updateNumber(1)">Team A</button>
+    </div>
+
+    <div class="number-container">
+        <div id="number2" class="number">?</div>
+        <button id="button2" onclick="updateNumber(2)">Team B</button>
+    </div>
+
+    <button id="reset-btn" onclick="resetNumbers()">Reset Score</button>
+
+    <script>
+        let scoreTeamA = null;
+        let scoreTeamB = null;
+
+        function updateNumber(buttonNumber) {
+            let buttonId = "button" + buttonNumber;
+
+            if (document.getElementById(buttonId).disabled) {
+                return;
+            }
+
+            if (buttonNumber === 1) {
+                scoreTeamA = Math.floor(Math.random() * 5);
+                document.getElementById('number1').innerText = scoreTeamA;
+            } else if (buttonNumber === 2) {
+                scoreTeamB = Math.floor(Math.random() * 5);
+                document.getElementById('number2').innerText = scoreTeamB;
+            }
+
+            document.getElementById(buttonId).disabled = true;
+        }
+
+        function resetNumbers() {
+            document.getElementById('button1').disabled = false;
+            document.getElementById('button2').disabled = false;
+
+            scoreTeamA = null;
+            scoreTeamB = null;
+            document.getElementById('number1').innerText = '?';
+            document.getElementById('number2').innerText = '?';
+        }
+    </script>
+
+</body>
+</html>
