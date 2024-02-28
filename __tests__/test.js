@@ -3,7 +3,20 @@ const { updateNumber, resetNumbers } = require('../test-script.js');
 // Mock the DOM environment using JSDOM
 const { JSDOM } = require('jsdom');
 //const { document } = new JSDOM('').window;
-const dom = new JSDOM('<!doctype html><html><body></body></html>');
+const dom = new JSDOM(`
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Test Page</title>
+    </head>
+    <body>
+      <div id="number1">?</div>
+      <div id="number2">?</div>
+    </body>
+  </html>
+`);
 global.document = dom.window.document;
 
 // Mock the getElementById function
