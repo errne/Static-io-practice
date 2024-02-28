@@ -34,6 +34,8 @@ test('updateNumber updates the displayed number for Team 2', () => {
 
 test('resetNumbers resets the displayed number for Team 1', () => {
     resetNumbers();
+    onst number1Text = document.getElementById('number1').innerText;
+    console.log('Number 1 text:', number1Text);
     expect(document.getElementById('number1').innerText).toBe('?');
 });
 
