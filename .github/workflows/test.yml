@@ -31,7 +31,7 @@ jobs:
 
     - name: Create Jest Configuration
       run: |
-        echo "{ 'testMatch': ['**/__tests__/**/*.js','**/?(*.)+(spec|test).js]' }" > jest.config.json
+        echo '{ "testMatch": ["**/__tests__/**/*.js", "**/?(*.)+(spec|test).js"] }' > jest.config.json
 
     - name: Install Dependencies
       run: |
