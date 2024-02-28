@@ -1,4 +1,4 @@
-const { updateNumber, resetNumbers } = require('./test-script.js'); 
+const { updateNumber, resetNumbers } = require('../test-script.js');
 
 // Mock the DOM environment using JSDOM
 const { JSDOM } = require('jsdom');
