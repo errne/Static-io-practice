@@ -18,3 +18,20 @@ jobs:
 
     - name: Validate HTML files
       run: html-validate "*.html"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: |
+        npm init -y
+        npm install jest --save-dev
+
+    - name: Create Jest Configuration
+      run: |
+        echo '{"test": "jest"}' > jest.config.json
+
+    - name: Run Jest Tests
+      run: npm test
