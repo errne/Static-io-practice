@@ -1,0 +1,20 @@
+name: HTML Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install HTML Validator
+      run: npm install -g html-validate
+
+    - name: Validate HTML files
+      run: html-validate "*.html"
