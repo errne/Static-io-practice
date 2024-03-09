@@ -15,17 +15,20 @@ function updateNumber(buttonNumber) {
     } else if (buttonNumber === 2) {
         number2 = Math.floor(Math.random() * 42) + 60;
         document.getElementById('number2').innerText = number2;
+           console.log(number2);
     }
 
     document.getElementById(buttonId).disabled = true;
 }
 
 function resetNumbers() {
+    console.log(number2);
     document.getElementById('button1').disabled = false;
     document.getElementById('button2').disabled = false;
 
     document.getElementById('number1').innerText = number0;
     document.getElementById('number2').innerText = number0;
+       console.log('resetNumbers called');
 }
 
 // Export functions for testing
