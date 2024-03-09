@@ -35,7 +35,7 @@ jobs:
         id: create_tag
         run: |
           # Get the current version from package.json or any other source
-          current_version=$(cat version.txt)  # Assuming your version is stored in version.txt
+          current_version='v1.0.0' 
 
           # Bump the version based on the determined bump type
           case "${{ steps.determine_version.outputs.bump }}" in
