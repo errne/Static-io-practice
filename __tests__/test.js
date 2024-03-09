@@ -20,9 +20,7 @@ const dom = new JSDOM(`
 `);
 global.document = dom.window.document;
 
-global.document.getElementById = jest.fn((id) => {
-  return dom.window.document.getElementById(id);
-});
+global.document.getElementById = jest.fn(() => document.createElement('div'));
 
 test('updateNumber updates the displayed number for Team 1', () => {
     updateNumber(1);
