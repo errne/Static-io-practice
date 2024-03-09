@@ -10,6 +10,7 @@ function updateNumber(buttonNumber) {
     }
 
     if (buttonNumber === 1) {
+        console.log(number1);
         number1 = Math.floor(Math.random() * 42) + 60;
         document.getElementById('number1').innerText = number1;
     } else if (buttonNumber === 2) {
@@ -22,13 +23,14 @@ function updateNumber(buttonNumber) {
 }
 
 function resetNumbers() {
+    console.log('resetNumbers called');
+    console.log(number1);
     console.log(number2);
     document.getElementById('button1').disabled = false;
     document.getElementById('button2').disabled = false;
 
     document.getElementById('number1').innerText = number0;
-    document.getElementById('number2').innerText = number0;
-       console.log('resetNumbers called');
+    document.getElementById('number2').innerText = number0;    
 }
 
 // Export functions for testing
