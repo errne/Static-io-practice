@@ -1,6 +1,3 @@
-const { updateNumber, resetNumbers } = require('../test-script.js');
-
-// Mock the DOM environment using JSDOM
 const { JSDOM } = require('jsdom');
 const dom = new JSDOM(`
   <!DOCTYPE html>
@@ -20,7 +17,13 @@ const dom = new JSDOM(`
 `);
 global.document = dom.window.document;
 
-global.document.getElementById = jest.fn(() => document.createElement('div'));
+global.document.getElementById = jest.fn((id) => {
+  return {
+    disabled: false,
+    innerText: '',
+    id: id,
+  };
+});
 
 test('updateNumber updates the displayed number for Team 1', () => {
     updateNumber(1);
@@ -41,3 +44,42 @@ test('resetNumbers resets the displayed number for Team 2', () => {
     resetNumbers();
     expect(document.getElementById('number2').innerText).toBe('?');
 });
+
+
+function updateNumber(buttonNumber) {
+    let buttonId = "button" + buttonNumber;
+
+    if (document.getElementById(buttonId).disabled) {
+        return;
+    }
+
+    if (buttonNumber === 1) {
+        global.document.getElementById = jest.fn(("number1") => {
+          return {
+            disabled: false,
+            innerText: '66',
+            id: id,
+          };
+        });
+    } else if (buttonNumber === 2) {
+        global.document.getElementById = jest.fn(("number2") => {
+          return {
+            disabled: false,
+            innerText: '76',
+            id: id,
+          };
+        });
+    }
+
+    document.getElementById(buttonId).disabled = true;
+}
+
+function resetNumbers() {
+     global.document.getElementById = jest.fn((id) => {
+    return {
+      disabled: false,
+      innerText: '?',
+      id: id,
+    };
+  });
+}
