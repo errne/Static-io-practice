@@ -29,18 +29,38 @@ jobs:
 
           # Determine the version bump based on commit messages
           if [[ $commits == *"#major"* ]]; then
-            echo "::set-output name=bump::major"
+            echo "bump=major" >> $GITHUB_OUTPUT
           elif [[ $commits == *"#minor"* ]]; then
-            echo "::set-output name=bump::minor"
+            echo "bump=minor" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=bump::patch"
+            echo "bump=patch" >> $GITHUB_OUTPUT
           fi
 
       - name: Create tag
         id: create_tag
         run: |
-          # Get the current version from package.json or any other source
-          current_version='v1.0.0' 
+          current_version=$(git describe --tags --abbrev=0)
+          current_version=${current_version:1}
+
+          IFS='.' read -ra version_parts <<< "$current_version"
+
+          # Determine the version bump based on commit messages
+          bump="${{ steps.determine_version.outputs.bump }}"
+
+          if [[ $bump == "major" ]]; then
+            version_parts[0]=$((version_parts[0] + 1))
+            version_parts[1]=0
+            version_parts[2]=0
+          elif [[ $bump == "minor" ]]; then
+            version_parts[1]=$((version_parts[1] + 1))
+            version_parts[2]=0
+          else
+            version_parts[2]=$((version_parts[2] + 1))
+          fi
+
+          new_version="v${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
+
+          echo $new_version
 
           # Create the new tag
           git tag $new_version
