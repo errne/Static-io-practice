@@ -39,7 +39,7 @@ jobs:
       - name: Create tag
         id: create_tag
         run: |
-          current_version=$(git describe --tags --abbrev=0)
+          current_version=$(git describe --tags --abbrev=0 --always)
           current_version=${current_version:1}
 
           IFS='.' read -ra version_parts <<< "$current_version"
