@@ -1,9 +1,10 @@
 name: Autotag
 
 on:
-  push:
-    branches:
-      - main 
+  workflow_run:
+    workflows: ["Deploy static content to Pages"]
+    types:
+      - completed
 
 jobs:
   tag:
