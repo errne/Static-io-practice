@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
       - name: Determine version bump
         id: determine_version
         run: |
@@ -36,19 +33,6 @@ jobs:
         run: |
           # Get the current version from package.json or any other source
           current_version='v1.0.0' 
-
-          # Bump the version based on the determined bump type
-          case "${{ steps.determine_version.outputs.bump }}" in
-            major)
-              new_version=$(semver bump major $current_version)
-              ;;
-            minor)
-              new_version=$(semver bump minor $current_version)
-              ;;
-            *)
-              new_version=$(semver bump patch $current_version)
-              ;;
-          esac
 
           # Create the new tag
           git tag $new_version
