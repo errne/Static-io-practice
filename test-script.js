@@ -1,5 +1,5 @@
-let number1 = null;
-let number2 = null;
+let number1 = '?';
+let number2 = '?';
 let number0 = '?';
 
 function updateNumber(buttonNumber) {
