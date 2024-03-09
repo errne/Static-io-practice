@@ -1,5 +1,6 @@
 let number1 = null;
 let number2 = null;
+let number0 = '?';
 
 function updateNumber(buttonNumber) {
     let buttonId = "button" + buttonNumber;
@@ -25,8 +26,8 @@ function resetNumbers() {
 
     number1 = null;
     number2 = null;
-    document.getElementById('number1').innerText = '?';
-    document.getElementById('number2').innerText = '?';
+    document.getElementById('number1').innerText = number0;
+    document.getElementById('number2').innerText = number0;
 }
 
 // Export functions for testing
