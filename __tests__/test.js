@@ -2,7 +2,6 @@ const { updateNumber, resetNumbers } = require('../test-script.js');
 
 // Mock the DOM environment using JSDOM
 const { JSDOM } = require('jsdom');
-//const { document } = new JSDOM('').window;
 const dom = new JSDOM(`
   <!DOCTYPE html>
   <html lang="en">
@@ -14,13 +13,17 @@ const dom = new JSDOM(`
     <body>
       <div id="number1">?</div>
       <div id="number2">?</div>
+      <button id="button1">Button 1</button>
+      <button id="button2">Button 2</button>
     </body>
   </html>
 `);
 global.document = dom.window.document;
 
 // Mock the getElementById function
-global.document.getElementById = jest.fn(() => document.createElement('div'));
+global.document.getElementById = jest.fn((id) => {
+  return dom.window.document.getElementById(id);
+});
 
 test('updateNumber updates the displayed number for Team 1', () => {
     updateNumber(1);
@@ -34,8 +37,6 @@ test('updateNumber updates the displayed number for Team 2', () => {
 
 test('resetNumbers resets the displayed number for Team 1', () => {
     resetNumbers();
-    const number1Text = document.getElementById('number1').innerText;
-    console.log('Number 1 text:', number1Text);
     expect(document.getElementById('number1').innerText).toBe('?');
 });
 
