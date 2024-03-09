@@ -24,7 +24,7 @@ global.document = dom.window.document;
 global.document.getElementById = jest.fn((id) => {
   return {
     disabled: false,
-    innerText: '',
+    innerText: '?',
     id: id,
   };
 });
