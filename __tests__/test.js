@@ -20,13 +20,8 @@ const dom = new JSDOM(`
 `);
 global.document = dom.window.document;
 
-// Mock the getElementById function
 global.document.getElementById = jest.fn((id) => {
-  return {
-    disabled: false,
-    innerText: '?',
-    id: id,
-  };
+  return dom.window.document.getElementById(id);
 });
 
 test('updateNumber updates the displayed number for Team 1', () => {
