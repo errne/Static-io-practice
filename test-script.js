@@ -24,8 +24,6 @@ function resetNumbers() {
     document.getElementById('button1').disabled = false;
     document.getElementById('button2').disabled = false;
 
-    number1 = null;
-    number2 = null;
     document.getElementById('number1').innerText = number0;
     document.getElementById('number2').innerText = number0;
 }
